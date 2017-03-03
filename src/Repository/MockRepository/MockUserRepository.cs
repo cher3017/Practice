@@ -68,8 +68,11 @@
             mockUserRepository.Setup(mr => mr.Delete(It.IsAny<int>())).Returns(
             (int id) =>
             {
-                var original = users.Where(q => q.Id == id).Single();
-                users.Remove(original);
+                var original = users.Where(q => q.Id == id).SingleOrDefault();
+                if(original != null)
+                {
+                    users.Remove(original);
+                }                    
                 return true;
             });
 
