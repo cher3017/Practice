@@ -50,7 +50,7 @@
                 }
                 else
                 {
-                    var original = users.Where(q => q.Id == target.Id).Single();
+                    var original = users.Where(q => q.Id == target.Id).SingleOrDefault();
 
                     if (original == null)
                     {
